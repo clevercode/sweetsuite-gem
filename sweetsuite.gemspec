@@ -1,18 +1,16 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "sweet_suite/version"
+require "sweetsuite/version"
 
 Gem::Specification.new do |s|
-  s.name        = "sweet_suite"
+  s.name        = "sweetsuite"
   s.version     = SweetSuite::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Andrew Smith']
   s.email       = ['andrew@clevercode.net']
   s.homepage    = "http://clevercode.codebasehq.com/sweetsuite"
   s.summary     = %q{SweetSuite API}
-  s.description = %q{TODO: Write a gem description}
-
-  s.rubyforge_project = "sweet_suite"
+  s.description = %q{Apparently it does some cool things for us}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

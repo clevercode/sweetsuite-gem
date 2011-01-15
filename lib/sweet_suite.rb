@@ -1,3 +1,0 @@
-module SweetSuite
-  # Your code goes here...
-end
