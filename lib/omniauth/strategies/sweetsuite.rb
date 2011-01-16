@@ -4,13 +4,15 @@ module OmniAuth
   module Strategies
     class SweetSuite < OAuth2
       
-      def initialize(app, api_key = nil, secret_key = nil, options = {}), &block)
+      def initialize(app, client_id = nil, client_secret = nil, options = {}, &block)
         client_options = {
-          :site => SweetSuite.config.auth_server,
-          :authorize_url => SweetSuite.config.authorize_url,
-          :access_token_url => SweetSuite.config.access_token_url
+          :site => ::SweetSuite.config.auth_server,
+          :authorize_url => ::SweetSuite.config.authorize_url,
+          :access_token_url => ::SweetSuite.config.access_token_url
         }
-        super(app, :sweet_suite, api_key, secret_key, client_options, &block)
+        api_key ||= ::SweetSuite.config.app_key
+        secret_key ||= ::SweetSuite.config.app_secret
+        super(app, :sweetsuite, api_key, secret_key, client_options, options, &block)
       end
       
       protected
@@ -33,7 +35,7 @@ module OmniAuth
           'uid' => user_data['uid'],
           'user_info' => user_data['user_info'],
           'extra' => {}
-        end
+        })
       end
     end
   end

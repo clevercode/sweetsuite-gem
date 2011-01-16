@@ -1,7 +1,9 @@
+require 'sweetsuite/configuration'
+
 module SweetSuite
   
   def config
-    @@config || Configuration.new
+    @config ||= Configuration.new
   end
   
   # Configure SweetSuite integration.
@@ -14,7 +16,8 @@ module SweetSuite
     yield(config)
     config
   end
-  
+
+  extend self
 end
 
-require "sweetsweet/railtie" if defined?(Rails)
+require "sweetsuite/railtie" if defined?(Rails)

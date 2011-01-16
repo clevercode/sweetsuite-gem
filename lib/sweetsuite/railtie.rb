@@ -1,8 +1,11 @@
+require 'omniauth/strategies/sweetsuite'
+
 module SweetSuite
 
   class Railtie < ::Rails::Railtie
     
-    config.middlewares.use OmniAuth::Strategies::SweetSuite
+    config.app_middleware.insert_before ActionDispatch::Static,
+                                        OmniAuth::Strategies::SweetSuite
 
   end
 end

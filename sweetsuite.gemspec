@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
  
   s.add_runtime_dependency 'rails', '~> 3.0.3'
   s.add_runtime_dependency 'warden'
-  s.add_runtime_dependency 'omniauth'
+  s.add_runtime_dependency 'omniauth', '~> 0.2.0.beta2'
 end
