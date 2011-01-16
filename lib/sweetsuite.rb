@@ -1,6 +1,7 @@
-require 'sweetsuite/configuration'
-
 module SweetSuite
+
+  autoload :Helpers, 'sweetsuite/helpers'
+  autoload :Configuration, 'sweetsuite/configuration'
   
   def config
     @config ||= Configuration.new
