@@ -1,4 +1,5 @@
 require 'omniauth/oauth'
+require 'multi_json'
 
 module OmniAuth
   module Strategies
@@ -18,7 +19,7 @@ module OmniAuth
       protected
       
       def user_data
-        @user_data ||= {:dummy => :data}
+        @user_data ||= MultiJson.decode(@access_token.get('/profile.json'))
       end
       
       def request_phase
@@ -26,15 +27,17 @@ module OmniAuth
         super
       end
       
-      def user_hash
-        user_data
+      def user_info
+        {
+          'email' => user_data['email']
+        }
       end
       
       def auth_hash
         OmniAuth::Utils.deep_merge(super, {
-          'uid' => user_data['uid'],
-          'user_info' => user_data['user_info'],
-          'extra' => {}
+          'uid' => user_data['id'],
+          'user_info' => user_info,
+          'extra' => user_data
         })
       end
     end
