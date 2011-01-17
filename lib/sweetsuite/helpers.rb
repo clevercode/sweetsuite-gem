@@ -6,7 +6,9 @@ module SweetSuite
     extend ActiveSupport::Concern
     
     included do
-      helper_method :current_user, :user_signed_in?
+      if respond_to? :helper_method
+        helper_method :current_user, :user_signed_in?
+      end
     end
     
     # Should be used as a before filter to restrict access to SweetSuite users
