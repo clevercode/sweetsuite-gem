@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'sweetsuite'
+
+require 'sweetsuite/cli'
+
+begin
+  SweetSuite::CLI.start
+rescue Interrupt => e
+  exit 1
+end
