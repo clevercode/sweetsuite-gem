@@ -23,7 +23,7 @@ module SweetSuite
 
     # @return The current user as a Hash of values returned from the API
     def current_user
-      @current_user ||= MultiJson.decode(ss_api.get('profile.json'))['user']
+      @current_user ||= SweetSuite::User.profile(ss_api)
     end
 
     # @return An OAuth2::AccessToken that can be used to use the SS API
