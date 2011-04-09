@@ -1,7 +1,8 @@
 module SweetSuite
 
-  autoload :Helpers, 'sweetsuite/helpers'
-  autoload :Configuration, 'sweetsuite/configuration'
+  autoload :Api,            'sweetsuite/api'
+  autoload :Configuration,  'sweetsuite/configuration'
+  autoload :Helpers,        'sweetsuite/helpers'
   
   def config
     @config ||= Configuration.new
