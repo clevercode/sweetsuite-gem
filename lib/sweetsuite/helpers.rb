@@ -10,6 +10,10 @@ module SweetSuite
         helper_method :current_user, :user_signed_in?
       end
     end
+
+    def user_signed_in?
+      !!access_token
+    end
     
     # Should be used as a before filter to restrict access to SweetSuite users
     def authenticate_user!
@@ -24,6 +28,8 @@ module SweetSuite
     # @return The current user as a Hash of values returned from the API
     def current_user
       @current_user ||= SweetSuite::User.profile(ss_api)
+    rescue OAuth2::AccessDenied
+      nil
     end
 
     # @return An OAuth2::AccessToken that can be used to use the SS API
