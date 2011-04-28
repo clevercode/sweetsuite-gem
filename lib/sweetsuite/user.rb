@@ -34,6 +34,11 @@ module SweetSuite
     define_attribute_methods [:first_name, :last_name, :email]
 
 
+    def name
+      '%s %s' % [ first_name, last_name ]
+    end
+
+
   end
 
 end
