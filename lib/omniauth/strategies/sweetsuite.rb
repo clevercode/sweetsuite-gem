@@ -5,26 +5,22 @@ module OmniAuth
   module Strategies
     class SweetSuite < OAuth2
       
-      def initialize(app, client_id = nil, client_secret = nil, options = {}, &block)
+      def initialize(app, consumer_key = nil, consumer_secret = nil, options = {}, &block)
         client_options = {
           :site => ::SweetSuite.config.auth_server,
-          :authorize_url => ::SweetSuite.config.authorize_url,
-          :access_token_url => ::SweetSuite.config.access_token_url
+          :authorize_path => 'oauth/authorize',
+          :access_token_path => 'oauth/access_token'
         }
-        api_key ||= ::SweetSuite.config.app_key
-        secret_key ||= ::SweetSuite.config.app_secret
-        super(app, :sweetsuite, api_key, secret_key, client_options, options, &block)
+        consumer_key ||= ::SweetSuite.config.app_key
+        consumer_secret ||= ::SweetSuite.config.app_secret
+
+        super(app, :sweetsuite, consumer_key, consumer_secret, client_options, options, &block)
       end
       
       protected
       
       def user_data
         @user_data ||= MultiJson.decode(@access_token.get('/profile.json'))
-      end
-      
-      def request_phase
-        options[:scope] ||= "read"
-        super
       end
       
       def user_info

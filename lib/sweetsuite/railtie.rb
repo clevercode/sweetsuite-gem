@@ -4,7 +4,7 @@ module SweetSuite
 
   class Railtie < ::Rails::Railtie
     
-    config.app_middleware.insert_after Rails::Rack::Logger,
+    config.app_middleware.insert_after ActionDispatch::Session::CookieStore,
                                        OmniAuth::Strategies::SweetSuite
 
   end
