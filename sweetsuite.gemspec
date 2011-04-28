@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "sweetsuite/version"
+require "sweet_suite/version"
 
 Gem::Specification.new do |s|
   s.name        = "sweetsuite"
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
  
-  s.add_runtime_dependency 'rails', '~> 3.0.3'
+  s.add_runtime_dependency 'rails', '~> 3.0.7'
   s.add_runtime_dependency 'thor'
   s.add_runtime_dependency 'warden'
   s.add_runtime_dependency 'omniauth', '~> 0.2.4'
