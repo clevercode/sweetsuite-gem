@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gemspec
 
-
+gem 'growl'
 gem 'rb-fsevent'
 gem 'guard'
 gem 'guard-coffeescript'
